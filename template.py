@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
-from load_css import local_css
+
 
 def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,get_crunch,get_plank,get_event3,get_run,get_row):
 	#read and setup male pullup CSV file
@@ -183,7 +183,6 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 		
 def main():
 	st.title("2021 USMC PFT Calculator")
-	local_css("static\\style.css")
 	html_temp="An updated calculator that complies with MCO 6100.13A with CH-3 dated 23 February 2021.<br> By. Beau Rogers "
 	st.markdown(html_temp,unsafe_allow_html = True)
 	get_Gender = st.radio("Select your gender",("Male","Female"))
