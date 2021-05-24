@@ -173,10 +173,7 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 			row_pts = f_row_alt_df.loc[[get_row],[age]].values[0]
 			event3 = row_pts
 
-	
-	
-	
-	
+		
 	prediction = int(event1) + int(event2) + int(event3)
 
 	return prediction
