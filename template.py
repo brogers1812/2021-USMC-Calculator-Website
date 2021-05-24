@@ -86,34 +86,34 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 
 
 	if gender == "Male" and get_event1 == "Pull-ups":
-		m_pullup_df=pd.read_csv("lookup_records\csv\m_pull.csv",index_col=0)
+		m_pullup_df=pd.read_csv("lookup_records/csv/m_pull.csv",index_col=0)
 		pull_pts = m_pullup_df.loc[[get_pull],[age]].values[0]
 		event1 = pull_pts
 
 	elif gender == "Male" and get_event1 == "Push-ups":
-		m_pushup_df=pd.read_csv("lookup_records\csv\m_push.csv",index_col=0)
+		m_pushup_df=pd.read_csv("lookup_records/csv/m_push.csv",index_col=0)
 		pushup_pts = m_pushup_df.loc[[get_push],[age]].values[0]
 		event1 = pushup_pts
 
 	elif gender == "Female" and get_event1 == "Push-ups":
-		m_pushup_df=pd.read_csv("lookup_records\csv\\f_push.csv",index_col=0)
+		m_pushup_df=pd.read_csv("lookup_records/csv/f_push.csv",index_col=0)
 		pushup_pts = m_pushup_df.loc[[get_push],[age]].values[0]
 		event1 = pushup_pts
 
 	else:
-		f_pullup_df=pd.read_csv("lookup_records\csv\\f_pull.csv",index_col=0)
+		f_pullup_df=pd.read_csv("lookup_records/csv/f_pull.csv",index_col=0)
 		pull_pts = f_pullup_df.loc[[get_pull],[age]].values[0]
 		event1 = pull_pts
 
 	if gender == "Male" and get_event2 == "Crunches":
 		#read and setup male crunches CSV file
-		m_crunch_df=pd.read_csv("lookup_records\csv\m_crunch.csv",index_col=0)
+		m_crunch_df=pd.read_csv("lookup_records/csv/m_crunch.csv",index_col=0)
 		crunch_pts = m_crunch_df.loc[[get_crunch],[age]].values[0]
 		event2 = crunch_pts
 
 	elif gender == "Female" and get_event2 == "Crunches":
 		#read and setup female crunches CSV files
-		f_crunch_df=pd.read_csv("lookup_records\csv\\f_crunch.csv",index_col=0)
+		f_crunch_df=pd.read_csv("lookup_records/csv/f_crunch.csv",index_col=0)
 		crunch_pts = f_crunch_df.loc[[get_crunch],[age]].values[0]
 		event2 = crunch_pts
 	else:
@@ -134,42 +134,42 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 		get_plank = plank
 
 		#read and setup plank file
-		plank_df=pd.read_csv("lookup_records\csv\plank.csv",index_col=0)
+		plank_df=pd.read_csv("lookup_records/csv/plank.csv",index_col=0)
 		plank_pts = plank_df.loc[[get_plank],[age]].values[0]
 		event2 = plank_pts
 
 	if get_altitude == "No":
 		if gender == "Male" and get_event3 == "Run":
-			m_run_no_alt_df=pd.read_csv("lookup_records\csv\\m_run_no_alt.csv",index_col=0)
+			m_run_no_alt_df=pd.read_csv("lookup_records/csv/m_run_no_alt.csv",index_col=0)
 			run_pts = m_run_no_alt_df.loc[[get_run],[age]].values[0]
 			event3 = run_pts
 		elif gender == "Male" and get_event3 == "Row":
-			m_row_no_alt_df=pd.read_csv("lookup_records\csv\\m_row_no_alt.csv",index_col=0)
+			m_row_no_alt_df=pd.read_csv("lookup_records/csv/m_row_no_alt.csv",index_col=0)
 			row_pts = m_row_no_alt_df.loc[[get_row],[age]].values[0]
 			event3 = row_pts
 		elif gender == "Female" and get_event3 == "Run":
-			f_run_no_alt_df=pd.read_csv("lookup_records\csv\\f_run_no_alt.csv",index_col=0)
+			f_run_no_alt_df=pd.read_csv("lookup_records/csv/f_run_no_alt.csv",index_col=0)
 			run_pts = f_run_no_alt_df.loc[[get_run],[age]].values[0]
 			event3 = run_pts
 		elif gender == "Female" and get_event3 == "Row":
-			f_row_no_alt_df=pd.read_csv("lookup_records\csv\\f_row_no_alt.csv",index_col=0)
+			f_row_no_alt_df=pd.read_csv("lookup_records/csv/f_row_no_alt.csv",index_col=0)
 			row_pts = f_row_no_alt_df.loc[[get_row],[age]].values[0]
 			event3 = row_pts
 	else:
 		if gender == "Male" and get_event3 == "Run":
-			m_run_alt_df=pd.read_csv("lookup_records\csv\\m_run_alt.csv",index_col=0)
+			m_run_alt_df=pd.read_csv("lookup_records/csv/m_run_alt.csv",index_col=0)
 			run_pts = m_run_alt_df.loc[[get_run],[age]].values[0]
 			event3 = run_pts
 		elif gender == "Male" and get_event3 == "Row":
-			m_row_alt_df=pd.read_csv("lookup_records\csv\\m_row_alt.csv",index_col=0)
+			m_row_alt_df=pd.read_csv("lookup_records/csv/m_row_alt.csv",index_col=0)
 			row_pts = m_row_alt_df.loc[[get_row],[age]].values[0]
 			event3 = row_pts
 		elif gender == "Female" and get_event3 == "Run":
-			f_run_alt_df=pd.read_csv("lookup_records\csv\\f_run_alt.csv",index_col=0)
+			f_run_alt_df=pd.read_csv("lookup_records/csv/f_run_alt.csv",index_col=0)
 			run_pts = f_run_alt_df.loc[[get_run],[age]].values[0]
 			event3 = run_pts
 		elif gender == "Female" and get_event3 == "Row":
-			f_row_alt_df=pd.read_csv("lookup_records\csv\\f_row_alt.csv",index_col=0)
+			f_row_alt_df=pd.read_csv("lookup_records/csv/f_row_alt.csv",index_col=0)
 			row_pts = f_row_alt_df.loc[[get_row],[age]].values[0]
 			event3 = row_pts
 
@@ -220,10 +220,10 @@ def main():
 			get_row = st.number_input('Enter your rowtime:',value=22.00,min_value=18.40,max_value=26.40,step=.01)
 			get_run = 0
 		elif get_event3 == "Run" and get_Gender == "Female":
-			get_run = st.number_input('Enter your runtime:',value=22.00,min_value=22.30,max_value=37.30,step=.01)
+			get_run = st.number_input('Enter your runtime:',value=24.00,min_value=22.30,max_value=37.30,step=.01)
 			get_row = 0
 		elif get_event3 == "Row" and get_Gender == "Female":
-			get_row = st.number_input('Enter your rowtime:',value=22.00,min_value=21.40,max_value=29.40,step=.01)
+			get_row = st.number_input('Enter your rowtime:',value=24.00,min_value=21.40,max_value=29.40,step=.01)
 			get_run = 0
 		else:
 			get_row=0
