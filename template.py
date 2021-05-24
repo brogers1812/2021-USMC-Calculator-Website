@@ -251,20 +251,32 @@ def main():
 	if st.button("Predict"):
 		
 		totalscore=prediction(get_Gender,get_age,get_Altitude,get_pull,get_event1,get_push,get_event2,get_crunch,get_plank,get_event3,get_run,get_row)
-		st.sidebar.title('PFT stats')		
+		st.title('PFT stats')
+		st.markdown("You inputted that you are a {} year old {}".format(int(get_age),get_Gender),unsafe_allow_html = True)
+		if get_pull >= 1:
+			st.markdown("Pullups:  {}".format(int(get_pull)))		
+		else:
+			st.markdown("Pushups:  {}".format(int(get_push)))
+		if get_crunch >=1:
+			st.markdown("Crunches:  {}".format(int(get_crunch)))
+		else:
+			st.markdown("Plank:  {}".format(float(get_plank)))
+		if get_run >=1:
+			st.markdown("Run:  {}".format(float(get_run)))
+		else:
+			st.markdown("Row:  {}".format(float(get_row)))
 		if totalscore >= 235:
 			pftclass = "first"
-			st.sidebar.write("Your total PFT score is {} out of 300 points. \nYou earned a {} class PFT".format(int(totalscore), pftclass))
+			st.text("Your total PFT score is {} out of 300 points.You earned a {} class PFT".format(int(totalscore), pftclass))
 		elif totalscore <= 235 and totalscore >= 200:
 			pftclass = "second"
-			st.sidebar.write("Your total PFT score is {} out of 300 points. \nYou earned a {} class PFT".format(int(totalscore), pftclass))
+			st.text("Your total PFT score is {} out of 300 points.\nYou earned a {} class PFT".format(int(totalscore), pftclass))
 		elif totalscore <=200 and totalscore >= 120:
 			pftclass = "third"
-			score_statement = "<div>Your total PFT score is <span class='second'>{}</span> out of <span class='second'>300</span> points. \nYou earned a <span class='second'>{}</span> class PFT</div>".format(int(totalscore), pftclass)
-			st.sidebar.markdown(score_statement, unsafe_allow_html=True)
+			st.markdown("Your total PFT score is **_{}_** out of 300 points.\nYou earned a **_{}_** class PFT".format(int(totalscore), pftclass))
 		else:
 			pftclass = "Failed"
-			st.sidebar.write("Your total PFT score is {} out of 300 points.\nYou failed the PFT".format(int(totalscore)))
+			st.write("Your total PFT score is {} out of 300 points.\nYou failed the PFT".format(int(totalscore)))
 
 
 if __name__=='__main__':
