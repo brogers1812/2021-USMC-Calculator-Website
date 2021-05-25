@@ -10,10 +10,10 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 	get_push = str(get_push)
 	get_crunch = str(get_crunch)
 	get_plank = str(get_plank)
-
 	run = str(get_run)
+	row = str(get_row)
+
 	# Determine if the string has a range between XX.50 to XX.59
-# Determine if the string has a range between XX.50 to XX.59
 	run = [character for character in run if character.isalnum()]
 	run = int("".join(run))
 	run = str(run)
@@ -23,9 +23,6 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 			run = (run - run % 10) + 10
 		run = str(run) + "0"
 
-	print(type(run))
-	print(run)
-	run = str(run)
 	if run.endswith("5", 2,3):
 		run = int(run)
 		run = round(run,-2)
@@ -40,7 +37,6 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 		run = int(run)
 		if(run % 10 !=0):
 			run = (run - run % 10) + 10
-			get_run = str(run)
 		run = str(run)
 
 	else:
@@ -48,8 +44,8 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 
 	get_run = str(run)
 
-	row = str(get_row)
-	# Determine if the string has a range between XX.50 to XX.59
+
+	# Determine if the ROW string has a range between XX.50 to XX.59
 	row = [character for character in row if character.isalnum()]
 	row = int("".join(row))
 	row = str(row)
@@ -59,9 +55,6 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 			row = (row - row % 10) + 10
 		row = str(row) + "0"
 
-	print(type(row))
-	print(row)
-	row = str(row)
 	if row.endswith("5", 2,3):
 		row = int(row)
 		row = round(row,-2)
@@ -76,7 +69,6 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 		row = int(row)
 		if(row % 10 !=0):
 			row = (row - row % 10) + 10
-			get_row = str(row)
 		row = str(row)
 
 	else:
@@ -116,8 +108,8 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 		f_crunch_df=pd.read_csv("lookup_records/csv/f_crunch.csv",index_col=0)
 		crunch_pts = f_crunch_df.loc[[get_crunch],[age]].values[0]
 		event2 = crunch_pts
+	
 	else:
-		
 		plank = str(get_plank)
 		plank = [character for character in plank if character.isalnum()]
 		plank = int("".join(plank))
@@ -127,11 +119,7 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 			if(plank % 10 !=0):
 				plank = (plank - plank % 10) + 10
 				plank = str(plank) + "0"
-
-			print(type(plank))
-			print(plank)
-
-		get_plank = plank
+		get_plank = str(plank)
 
 		#read and setup plank file
 		plank_df=pd.read_csv("lookup_records/csv/plank.csv",index_col=0)
@@ -173,7 +161,6 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 			row_pts = f_row_alt_df.loc[[get_row],[age]].values[0]
 			event3 = row_pts
 
-		
 	prediction = int(event1) + int(event2) + int(event3)
 
 	return prediction
@@ -210,6 +197,9 @@ def main():
 		get_plank = 0
 	elif get_event2 == "Plank":
 		get_plank = st.number_input('Enter your plank time:',value=3.05,min_value=1.03,max_value=4.20,step=.01)
+		get_crunch = 0
+	else:
+		get_plank = 0
 		get_crunch = 0
 	get_event3 = st.radio("Did you perform the 3 mile run or 5k row?",("Run","Row"))
 	if get_Altitude == "Yes":
@@ -277,7 +267,6 @@ def main():
 		else:
 			pftclass = "Failed"
 			st.write("Your total PFT score is {} out of 300 points.\nYou failed the PFT".format(int(totalscore)))
-
 
 if __name__=='__main__':
 	main()
