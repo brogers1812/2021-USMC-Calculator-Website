@@ -10,9 +10,9 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 	get_push = str(get_push)
 	get_crunch = str(get_crunch)
 	get_plank = str(get_plank)
-
 	run = str(get_run)
-	# Determine if the string has a range between XX.50 to XX.59
+	row = str(get_row)
+
 # Determine if the string has a range between XX.50 to XX.59
 	run = [character for character in run if character.isalnum()]
 	run = int("".join(run))
@@ -23,12 +23,10 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 			run = (run - run % 10) + 10
 		run = str(run) + "0"
 
-	print(type(run))
-	print(run)
-	run = str(run)
 	if run.endswith("5", 2,3):
 		run = int(run)
 		run = round(run,-2)
+		run = str(run)
 
 	elif run.endswith("0", 2,3):
 		run = int(run)
@@ -46,9 +44,9 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 	else:
 		get_run = 0
 
-	get_run = str(run)
+	get_run = run
 
-	row = str(get_row)
+
 	# Determine if the string has a range between XX.50 to XX.59
 	row = [character for character in row if character.isalnum()]
 	row = int("".join(row))
@@ -59,12 +57,10 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 			row = (row - row % 10) + 10
 		row = str(row) + "0"
 
-	print(type(row))
-	print(row)
-	row = str(row)
 	if row.endswith("5", 2,3):
 		row = int(row)
 		row = round(row,-2)
+		row = str(row)
 
 	elif row.endswith("0", 2,3):
 		row = int(row)
@@ -82,7 +78,7 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 	else:
 		get_row = 0
 
-	get_row = str(row)
+	get_row = row
 
 
 	if gender == "Male" and get_event1 == "Pull-ups":
@@ -127,9 +123,6 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 			if(plank % 10 !=0):
 				plank = (plank - plank % 10) + 10
 				plank = str(plank) + "0"
-
-			print(type(plank))
-			print(plank)
 
 		get_plank = plank
 
@@ -248,7 +241,7 @@ def main():
 		get_row = 0
 		get_run = 0
 	
-	if st.button("Predict"):
+	if st.button("Calculate"):
 		
 		totalscore=prediction(get_Gender,get_age,get_Altitude,get_pull,get_event1,get_push,get_event2,get_crunch,get_plank,get_event3,get_run,get_row)
 		st.title('PFT stats')
