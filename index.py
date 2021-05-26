@@ -3,7 +3,7 @@ import numpy as np
 import streamlit as st
 
 
-def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,get_crunch,get_plank,get_event3,get_run,get_row):
+def pftfunc(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,get_crunch,get_plank,get_event3,get_run,get_row):
 	#read and setup male pullup CSV file
 	age = str(age)
 	pull = str(get_pull)
@@ -165,17 +165,90 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 			event3 = row_pts
 
 		
-	prediction = int(event1) + int(event2) + int(event3)
+	pftfunc = int(event1) + int(event2) + int(event3)
 
-	return prediction
+	return pftfunc
+
+def cftfunc(gender,age,altitude,get_mtc,get_acl,get_muf):
+	#read and setup male pullup CSV file
+	age = str(age)
+	mtc = str(get_mtc)
+	acl = str(get_acl)
+	muf = str(get_muf)
+
+	# Determine if the string has a range between XX.50 to XX.59
+		
+		#MTC lookup records
+	mtc = [character for character in mtc if character.isalnum()]
+	mtc = int("".join(mtc))
+	mtc = str(mtc)
+	if mtc.endswith("0"):
+		mtc = int(mtc)
+		if(mtc % 10 !=0):
+			mtc = (mtc - mtc % 10) + 10
+		mtc = str(mtc)
+
+	if gender == "Male" and altitude == "No":
+		m_mtc_df=pd.read_csv("lookup_records/csv/cft/m_mtc_no_alt.csv",index_col=0)
+		mtc_pts = m_mtc_df.loc[[mtc],[age]].values[0]
+		event1 = mtc_pts
+	elif gender == "Male" and altitude == "Yes":
+		m_mtc_df=pd.read_csv("lookup_records/csv/cft/m_mtc_alt.csv",index_col=0)
+		mtc_pts = m_mtc_df.loc[[mtc],[age]].values[0]
+		event1 = mtc_pts
+	elif gender == "Female" and altitude == "No":
+		f_mtc_df=pd.read_csv("lookup_records/csv/cft/f_mtc_no_alt.csv",index_col=0)
+		mtc_pts = f_mtc_df.loc[[mtc],[age]].values[0]
+		event1 = mtc_pts
+	elif gender == "Female" and altitude == "Yes":
+		f_mtc_df=pd.read_csv("lookup_records/csv/cft/f_mtc_alt.csv",index_col=0)
+		mtc_pts = f_mtc_df.loc[[mtc],[age]].values[0]
+		event1 = mtc_pts
+	#ACL record looup
+	if gender == "Male":
+		m_acl_df=pd.read_csv("lookup_records/csv/cft/m_acl.csv",index_col=0)
+		acl_pts = m_acl_df.loc[[acl],[age]].values[0]
+		event2 = acl_pts
+	elif gender == "Female":
+		f_acl_df=pd.read_csv("lookup_records/csv/cft/f_acl.csv",index_col=0)
+		acl_pts = f_acl_df.loc[[acl],[age]].values[0]
+		event2 = acl_pts
+	#MUF record lookup
+	muf = [character for character in muf if character.isalnum()]
+	muf = int("".join(muf))
+	muf = str(muf)
+	if muf.endswith("0"):
+		muf = int(muf)
+		if(muf % 10 !=0):
+			muf = (muf - muf % 10) + 10
+		muf = str(muf) + "0"
+	if gender == "Male" and altitude == "No":
+		m_muf_df=pd.read_csv("lookup_records/csv/cft/m_muf_no_alt.csv",index_col=0)
+		muf_pts = m_muf_df.loc[[muf],[age]].values[0]
+		event3 = muf_pts
+	elif gender == "Male" and altitude == "Yes":
+		m_muf_df=pd.read_csv("lookup_records/csv/cft/m_muf_alt.csv",index_col=0)
+		muf_pts = m_muf_df.loc[[muf],[age]].values[0]
+		event3 = muf_pts
+	elif gender == "Female" and altitude == "No":
+		f_muf_df=pd.read_csv("lookup_records/csv/cft/f_muf_no_alt.csv",index_col=0)
+		muf_pts = f_muf_df.loc[[muf],[age]].values[0]
+		event3 = muf_pts
+	elif gender == "Female" and altitude == "Yes":
+		f_muf_df=pd.read_csv("lookup_records/csv/cft/f_muf_alt.csv",index_col=0)
+		muf_pts = f_muf_df.loc[[muf],[age]].values[0]
+		event3 = muf_pts
+
+	cftfunc = int(event1) + int(event2) + int(event3) 
+	return cftfunc
 		
 def main():
-	st.title("2021 USMC PFT Calculator")
+	st.title("2021 USMC PFT/CFT Calculator")
 	html_temp="An updated calculator that complies with MCO 6100.13A with CH-3 dated 23 February 2021.<br> By. Beau Rogers "
 	st.markdown(html_temp,unsafe_allow_html = True)
 	get_type = st.radio("Did you perform the PFT or CFT?",("PFT","CFT"))
 	get_Gender = st.radio("Select your gender",("Male","Female"))
-	get_Altitude = st.radio("Did you conduct the PFT at an elevation above 4500 ft mean sea level?",("Yes","No"))
+	get_Altitude = st.radio("Did you conduct the PFT at an elevation above 4500 ft mean sea level?",("No","Yes"))
 	get_age = st.slider("How old are you?",value=25, min_value=17, max_value=51, step=1)
 	if get_type == "PFT":
 		get_event1 = st.radio("Did you perform pullups or pushups?",("Pull-ups","Push-ups"))
@@ -241,37 +314,76 @@ def main():
 			get_row = 0
 			get_run = 0
 	else:
-		st.write("TEST")
+		if get_Altitude == "No" and get_Gender == "Male":
+			get_mtc = st.number_input('Enter your time for movement to contact:',value=3.00,min_value=2.38,max_value=5.07,step=.01)
+		elif get_Altitude == "No" and get_Gender == "Female":
+			get_mtc = st.number_input('Enter your time for movement to contact:',value=4.00,min_value=3.10,max_value=5.52,step=.01)
+		elif get_Altitude == "Yes" and get_Gender == "Male":
+			get_mtc = st.number_input('Enter your time for movement to contact:',value=3.00,min_value=2.44,max_value=5.11,step=.01)
+		elif get_Altitude == "Yes" and get_Gender == "Female":
+			get_mtc = st.number_input('Enter your time for movement to contact:',value=4.00,min_value=3.16,max_value=5.58,step=.01)
+		if  get_Gender == "Male":
+			get_acl = st.slider('How many ammo can lifts did you perform?',value=90,min_value=16,max_value=120,step=1)
+		elif get_Gender == "Female":
+			get_acl = st.slider('How many ammo can lifts did you perform?',value=50,min_value=6,max_value=75,step=1)
+		if get_Altitude == "No" and get_Gender == "Male":
+			get_muf = st.number_input('Enter your time for maneuver under fire:',value=3.00,min_value=2.04,max_value=6.09,step=.01)
+		elif get_Altitude == "No" and get_Gender == "Female":
+			get_muf = st.number_input('Enter your time for maneuver under fire:',value=4.00,min_value=2.42,max_value=6.33,step=.01)
+		elif get_Altitude == "Yes" and get_Gender == "Male":
+			get_muf = st.number_input('Enter your time for maneuver under fire:',value=3.00,min_value=2.12,max_value=6.17,step=.01)
+		elif get_Altitude == "Yes" and get_Gender == "Female":
+			get_muf = st.number_input('Enter your time for maneuver under fire:',value=4.00,min_value=2.50,max_value=6.41,step=.01)
 	
 	if st.button("Calculate"):
-		
-		totalscore=prediction(get_Gender,get_age,get_Altitude,get_pull,get_event1,get_push,get_event2,get_crunch,get_plank,get_event3,get_run,get_row)
-		st.title('PFT stats')
-		st.markdown("You inputted that you are a {} year old {}".format(int(get_age),get_Gender),unsafe_allow_html = True)
-		if get_pull >= 1:
-			st.markdown("Pullups:  {}".format(int(get_pull)))		
-		else:
-			st.markdown("Pushups:  {}".format(int(get_push)))
-		if get_crunch >=1:
-			st.markdown("Crunches:  {}".format(int(get_crunch)))
-		else:
-			st.markdown("Plank:  {}".format(float(get_plank)))
-		if get_run >=1:
-			st.markdown("Run:  {}".format(float(get_run)))
-		else:
-			st.markdown("Row:  {}".format(float(get_row)))
-		if totalscore >= 235:
-			pftclass = "first"
-			st.text("Your total PFT score is {} out of 300 points.You earned a {} class PFT".format(int(totalscore), pftclass))
-		elif totalscore <= 235 and totalscore >= 200:
-			pftclass = "second"
-			st.text("Your total PFT score is {} out of 300 points.\nYou earned a {} class PFT".format(int(totalscore), pftclass))
-		elif totalscore <=200 and totalscore >= 120:
-			pftclass = "third"
-			st.markdown("Your total PFT score is **_{}_** out of 300 points.\nYou earned a **_{}_** class PFT".format(int(totalscore), pftclass))
-		else:
-			pftclass = "Failed"
-			st.write("Your total PFT score is {} out of 300 points.\nYou failed the PFT".format(int(totalscore)))
+		if get_type == "PFT":
+			totalscore=pftfunc(get_Gender,get_age,get_Altitude,get_pull,get_event1,get_push,get_event2,get_crunch,get_plank,get_event3,get_run,get_row)
+			st.title('PFT results')
+			st.markdown("You inputted that you are a {} year old {}".format(int(get_age),get_Gender),unsafe_allow_html = True)
+			if get_pull >= 1:
+				st.markdown("Pullups:  {}".format(int(get_pull)))		
+			else:
+				st.markdown("Pushups:  {}".format(int(get_push)))
+			if get_crunch >=1:
+				st.markdown("Crunches:  {}".format(int(get_crunch)))
+			else:
+				st.markdown("Plank:  {}".format(float(get_plank)))
+			if get_run >=1:
+				st.markdown("Run:  {}".format(float(get_run)))
+			else:
+				st.markdown("Row:  {}".format(float(get_row)))
+			if totalscore >= 235:
+				pftclass = "first"
+				st.text("Your total PFT score is {} out of 300 points.You earned a {} class PFT!".format(int(totalscore), pftclass))
+			elif totalscore <= 235 and totalscore >= 200:
+				pftclass = "second"
+				st.text("Your total PFT score is {} out of 300 points.\nYou earned a {} class PFT!".format(int(totalscore), pftclass))
+			elif totalscore <=200 and totalscore >= 120:
+				pftclass = "third"
+				st.markdown("Your total PFT score is **_{}_** out of 300 points.\nYou earned a **_{}_** class PFT!".format(int(totalscore), pftclass))
+			else:
+				pftclass = "Failed"
+				st.write("Your total PFT score is {} out of 300 points.\nYou failed the PFT!".format(int(totalscore)))
+		elif get_type == "CFT":
+			totalscore=cftfunc(get_Gender,get_age,get_Altitude,get_mtc,get_acl,get_muf)
+			st.title('CFT results')
+			st.markdown("You inputted that you are a {} year old {}".format(int(get_age),get_Gender),unsafe_allow_html = True)
+			st.markdown("Maneuver To Contact:  {}".format(float(get_mtc)))
+			st.markdown("Ammo Can Life:  {}".format(int(get_acl)))
+			st.markdown("Maneuver Under Fire:  {}".format(float(get_muf)))
+			if totalscore >= 235:
+				pftclass = "first"
+				st.markdown("Your total CFT score is {} out of 300 points.You earned a {} class PFT!".format(int(totalscore), pftclass))
+			elif totalscore <= 234 and totalscore >= 200:
+				pftclass = "second"
+				st.markdown("Your total CFT score is {} out of 300 points.\nYou earned a {} class PFT!".format(int(totalscore), pftclass))
+			elif totalscore <=199 and totalscore >= 150:
+				pftclass = "third"
+				st.markdown("Your total CFT score is **_{}_** out of 300 points.\nYou earned a **_{}_** class PFT!".format(int(totalscore), pftclass))
+			else:
+				pftclass = "Failed"
+				st.markdown("Your total PFT score is {} out of 300 points.\nYou failed the PFT!".format(int(totalscore)))
+
 
 
 if __name__=='__main__':

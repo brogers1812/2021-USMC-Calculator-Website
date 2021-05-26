@@ -243,12 +243,12 @@ def cftfunc(gender,age,altitude,get_mtc,get_acl,get_muf):
 	return cftfunc
 		
 def main():
-	st.title("2021 USMC PFT Calculator")
+	st.title("2021 USMC PFT/CFT Calculator")
 	html_temp="An updated calculator that complies with MCO 6100.13A with CH-3 dated 23 February 2021.<br> By. Beau Rogers "
 	st.markdown(html_temp,unsafe_allow_html = True)
 	get_type = st.radio("Did you perform the PFT or CFT?",("PFT","CFT"))
 	get_Gender = st.radio("Select your gender",("Male","Female"))
-	get_Altitude = st.radio("Did you conduct the PFT at an elevation above 4500 ft mean sea level?",("Yes","No"))
+	get_Altitude = st.radio("Did you conduct the PFT at an elevation above 4500 ft mean sea level?",("No","Yes"))
 	get_age = st.slider("How old are you?",value=25, min_value=17, max_value=51, step=1)
 	if get_type == "PFT":
 		get_event1 = st.radio("Did you perform pullups or pushups?",("Pull-ups","Push-ups"))
