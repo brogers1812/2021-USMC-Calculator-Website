@@ -3,7 +3,7 @@ import numpy as np
 import streamlit as st
 
 
-def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,get_crunch,get_plank,get_event3,get_run,get_row):
+def pftfunc(gender,age,altitude,get_pull,get_event1,get_push,get_event2,get_crunch,get_plank,get_event3,get_run,get_row):
 	#read and setup male pullup CSV file
 	age = str(age)
 	pull = str(get_pull)
@@ -13,7 +13,7 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 	run = str(get_run)
 	row = str(get_row)
 
-# Determine if the string has a range between XX.50 to XX.59
+	# Determine if the string has a range between XX.50 to XX.59
 	run = [character for character in run if character.isalnum()]
 	run = int("".join(run))
 	run = str(run)
@@ -27,13 +27,11 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 		run = int(run)
 		run = round(run,-2)
 		run = str(run)
-
 	elif run.endswith("0", 2,3):
 		run = int(run)
 		if(run % 10 !=0):
 			run = (run - run % 10) + 10
 		run = str(run)
-
 	elif run.endswith("1", 2,3) or run.endswith("2", 2,3) or run.endswith("3", 2,3) or run.endswith("4", 2,3):
 		run = int(run)
 		if(run % 10 !=0):
@@ -47,7 +45,7 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 	get_run = run
 
 
-	# Determine if the string has a range between XX.50 to XX.59
+		# Determine if the string has a range between XX.50 to XX.59
 	row = [character for character in row if character.isalnum()]
 	row = int("".join(row))
 	row = str(row)
@@ -56,28 +54,23 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 		if(row % 10 !=0):
 			row = (row - row % 10) + 10
 		row = str(row) + "0"
-
 	if row.endswith("5", 2,3):
 		row = int(row)
 		row = round(row,-2)
 		row = str(row)
-
 	elif row.endswith("0", 2,3):
 		row = int(row)
 		if(row % 10 !=0):
 			row = (row - row % 10) + 10
 		row = str(row)
-
 	elif row.endswith("1", 2,3) or row.endswith("2", 2,3) or row.endswith("3", 2,3) or row.endswith("4", 2,3):
 		row = int(row)
 		if(row % 10 !=0):
 			row = (row - row % 10) + 10
 			get_row = str(row)
 		row = str(row)
-
 	else:
 		get_row = 0
-
 	get_row = row
 
 
@@ -85,35 +78,29 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 		m_pullup_df=pd.read_csv("lookup_records/csv/pft/m_pull.csv",index_col=0)
 		pull_pts = m_pullup_df.loc[[pull],[age]].values[0]
 		event1 = pull_pts
-
 	elif gender == "Male" and get_event1 == "Push-ups":
 		m_pushup_df=pd.read_csv("lookup_records/csv/pft/m_push.csv",index_col=0)
 		pushup_pts = m_pushup_df.loc[[push],[age]].values[0]
 		event1 = pushup_pts
-
 	elif gender == "Female" and get_event1 == "Push-ups":
 		m_pushup_df=pd.read_csv("lookup_records/csv/pft/f_push.csv",index_col=0)
 		pushup_pts = m_pushup_df.loc[[push],[age]].values[0]
 		event1 = pushup_pts
-
 	else:
 		f_pullup_df=pd.read_csv("lookup_records/csv/pft/f_pull.csv",index_col=0)
 		pull_pts = f_pullup_df.loc[[pull],[age]].values[0]
 		event1 = pull_pts
-
 	if gender == "Male" and get_event2 == "Crunches":
 		#read and setup male crunches CSV file
 		m_crunch_df=pd.read_csv("lookup_records/csv/pft/m_crunch.csv",index_col=0)
 		crunch_pts = m_crunch_df.loc[[crunch],[age]].values[0]
 		event2 = crunch_pts
-
 	elif gender == "Female" and get_event2 == "Crunches":
 		#read and setup female crunches CSV files
 		f_crunch_df=pd.read_csv("lookup_records/csv/pft/f_crunch.csv",index_col=0)
 		crunch_pts = f_crunch_df.loc[[crunch],[age]].values[0]
 		event2 = crunch_pts
-	else:
-		
+	else:			
 		plank = str(get_plank)
 		plank = [character for character in plank if character.isalnum()]
 		plank = int("".join(plank))
@@ -123,13 +110,12 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 			if(plank % 10 !=0):
 				plank = (plank - plank % 10) + 10
 				plank = str(plank) + "0"
-
 		#read and setup plank file
 		plank_df=pd.read_csv("lookup_records/csv/pft/plank.csv",index_col=0)
 		plank_pts = plank_df.loc[[plank],[age]].values[0]
 		event2 = plank_pts
 
-	if get_altitude == "No":
+	if altitude == "No":
 		if gender == "Male" and get_event3 == "Run":
 			m_run_no_alt_df=pd.read_csv("lookup_records/csv/pft/m_run_no_alt.csv",index_col=0)
 			run_pts = m_run_no_alt_df.loc[[get_run],[age]].values[0]
@@ -164,74 +150,74 @@ def prediction(gender,age,get_altitude,get_pull,get_event1,get_push,get_event2,g
 			row_pts = f_row_alt_df.loc[[get_row],[age]].values[0]
 			event3 = row_pts
 
-		
-	prediction = int(event1) + int(event2) + int(event3)
 
-	return prediction
+		pftfunc = int(event1) + int(event2) + int(event3)
+		return pftfunc
+
 		
 def main():
 	st.title("2021 USMC PFT Calculator")
 	html_temp="An updated calculator that complies with MCO 6100.13A with CH-3 dated 23 February 2021.<br> By. Beau Rogers "
 	st.markdown(html_temp,unsafe_allow_html = True)
 	get_type = st.radio("Did you perform the PFT or CFT?",("PFT","CFT"))
-	get_Gender = st.radio("Select your gender",("Male","Female"))
-	get_Altitude = st.radio("Did you conduct the PFT at an elevation above 4500 ft mean sea level?",("Yes","No"))
+	get_gender = st.radio("Select your gender",("Male","Female"))
+	altitude = st.radio("Did you conduct the PFT at an elevation above 4500 ft mean sea level?",("No","Yes"))
 	get_age = st.slider("How old are you?",value=25, min_value=17, max_value=51, step=1)
 	if get_type == "PFT":
 		get_event1 = st.radio("Did you perform pullups or pushups?",("Pull-ups","Push-ups"))
-		if get_event1 == 'Pull-ups' and get_Gender == "Male":
+		if get_event1 == 'Pull-ups' and get_gender == "Male":
 			get_pull = st.slider("How many pullups did you perform?",value=15, min_value=3, max_value=23, step=1)
 			get_push = 0
-		elif get_event1 == 'Push-ups' and get_Gender == "Male":
+		elif get_event1 == 'Push-ups' and get_gender == "Male":
 			get_push = st.slider("How many pushups did you perform?",value=50, min_value=20, max_value=87, step=1)
 			get_pull = 0
-		elif get_event1 == 'Pull-ups' and get_Gender == "Female":
+		elif get_event1 == 'Pull-ups' and get_gender == "Female":
 			get_pull = st.slider("How many pullups did you perform?",value=8, min_value=1, max_value=12, step=1)
 			get_push = 0
-		elif get_event1 == 'Push-ups' and get_Gender == 'Female':
+		elif get_event1 == 'Push-ups' and get_gender == 'Female':
 			get_push = st.slider("How many pushups did you perform?",value=30, min_value=10, max_value=50, step=1)
 			get_pull = 0
 		else:
 			get_pull = 0
 			get_push = 0
 		get_event2 = st.radio("Did you crunches or plank?",("Crunches","Plank"))
-		if get_event2 == "Crunches" and get_Gender == "Male":	
+		if get_event2 == "Crunches" and get_gender == "Male":	
 			get_crunch = st.slider("How many crunches did you perform?",value=70,min_value=40,max_value=115)
 			get_plank = 0
-		elif get_event2 == "Crunches" and get_Gender == "Female":	
+		elif get_event2 == "Crunches" and get_gender == "Female":	
 			get_crunch = st.slider("How many crunches did you perform?",value=70,min_value=40,max_value=110)
 			get_plank = 0
 		elif get_event2 == "Plank":
 			get_plank = st.number_input('Enter your plank time:',value=3.05,min_value=1.03,max_value=4.20,step=.01)
 			get_crunch = 0
 		get_event3 = st.radio("Did you perform the 3 mile run or 5k row?",("Run","Row"))
-		if get_Altitude == "Yes":
-			if get_event3 == "Run" and get_Gender == "Male":
+		if altitude == "Yes":
+			if get_event3 == "Run" and get_gender == "Male":
 				get_run = st.number_input('Enter your runtime:',value=22.00,min_value=19.30,max_value=34.30,step=.01)
 				get_row = 0
-			elif get_event3 == "Row" and get_Gender == "Male":
+			elif get_event3 == "Row" and get_gender == "Male":
 				get_row = st.number_input('Enter your rowtime:',value=22.00,min_value=18.40,max_value=26.40,step=.01)
 				get_run = 0
-			elif get_event3 == "Run" and get_Gender == "Female":
+			elif get_event3 == "Run" and get_gender == "Female":
 				get_run = st.number_input('Enter your runtime:',value=24.00,min_value=22.30,max_value=37.30,step=.01)
 				get_row = 0
-			elif get_event3 == "Row" and get_Gender == "Female":
+			elif get_event3 == "Row" and get_gender == "Female":
 				get_row = st.number_input('Enter your rowtime:',value=24.00,min_value=21.40,max_value=29.40,step=.01)
 				get_run = 0
 			else:
 				get_row=0
 				get_run=0
-		elif get_Altitude == "No":
-			if get_event3 == "Run" and get_Gender == "Male":
+		elif altitude == "No":
+			if get_event3 == "Run" and get_gender == "Male":
 				get_run = st.number_input('Enter your runtime:',value=22.00,min_value=18.00,max_value=33.00,step=.01)
 				get_row = 0
-			elif get_event3 == "Row" and get_Gender == "Male":
+			elif get_event3 == "Row" and get_gender == "Male":
 				get_row = st.number_input('Enter your rowtime:',value=22.00,min_value=18.00,max_value=26.00,step=.01)
 				get_run = 0
-			elif get_event3 == "Run" and get_Gender == "Female":
+			elif get_event3 == "Run" and get_gender == "Female":
 				get_run = st.number_input('Enter your runtime:',value=22.00,min_value=21.00,max_value=36.00,step=.01)
 				get_row = 0
-			elif get_event3 == "Row" and get_Gender == "Female":
+			elif get_event3 == "Row" and get_gender == "Female":
 				get_row = st.number_input('Enter your rowtime:',value=22.00,min_value=21.00,max_value=29.00,step=.01)
 				get_run = 0
 			else:
@@ -241,13 +227,34 @@ def main():
 			get_row = 0
 			get_run = 0
 	else:
-		st.write("TEST")
-	
+		if altitude == "No" and get_gender == "Male":
+			get_mtc = st.number_input('Enter your time for movement to contact:',value=3.00,min_value=2.38,max_value=5.07,step=.01)
+		elif altitude == "No" and get_gender == "Female":
+			get_mtc = st.number_input('Enter your time for movement to contact:',value=4.00,min_value=3.10,max_value=5.52,step=.01)
+		elif altitude == "Yes" and get_gender == "Male":
+			get_mtc = st.number_input('Enter your time for movement to contact:',value=3.00,min_value=2.44,max_value=5.11,step=.01)
+		elif altitude == "Yes" and get_gender == "Female":
+			get_mtc = st.number_input('Enter your time for movement to contact:',value=4.00,min_value=3.16,max_value=5.58,step=.01)
+		if  get_gender == "Male":
+			get_acl = st.slider('How many ammo can lifts did you perform?',value=90,min_value=16,max_value=120,step=1)
+		elif get_gender == "Female":
+			get_acl = st.slider('How many ammo can lifts did you perform?',value=50,min_value=6,max_value=75,step=1)
+		if altitude == "No" and get_gender == "Male":
+			get_muf = st.number_input('Enter your time for maneuver under fire:',value=3.00,min_value=2.04,max_value=6.09,step=.01)
+		elif altitude == "No" and get_gender == "Female":
+			get_muf = st.number_input('Enter your time for maneuver under fire:',value=4.00,min_value=2.42,max_value=6.33,step=.01)
+		elif altitude == "Yes" and get_gender == "Male":
+			get_muf = st.number_input('Enter your time for maneuver under fire:',value=3.00,min_value=2.12,max_value=6.17,step=.01)
+		elif altitude == "Yes" and get_gender == "Female":
+			get_muf = st.number_input('Enter your time for maneuver under fire:',value=4.00,min_value=2.50,max_value=6.41,step=.01)
+
+
+
 	if st.button("Calculate"):
-		
-		totalscore=prediction(get_Gender,get_age,get_Altitude,get_pull,get_event1,get_push,get_event2,get_crunch,get_plank,get_event3,get_run,get_row)
+			
+		totalscore=pftfunc(get_gender,get_age,altitude,get_pull,get_event1,get_push,get_event2,get_crunch,get_plank,get_event3,get_run,get_row)
 		st.title('PFT stats')
-		st.markdown("You inputted that you are a {} year old {}".format(int(get_age),get_Gender),unsafe_allow_html = True)
+		st.markdown("You inputted that you are a {} year old {}".format(int(get_age),get_gender),unsafe_allow_html = True)
 		if get_pull >= 1:
 			st.markdown("Pullups:  {}".format(int(get_pull)))		
 		else:
@@ -270,9 +277,9 @@ def main():
 			pftclass = "third"
 			st.markdown("Your total PFT score is **_{}_** out of 300 points.\nYou earned a **_{}_** class PFT".format(int(totalscore), pftclass))
 		else:
-			pftclass = "Failed"
 			st.write("Your total PFT score is {} out of 300 points.\nYou failed the PFT".format(int(totalscore)))
-
+		
+	
 
 if __name__=='__main__':
 	main()
