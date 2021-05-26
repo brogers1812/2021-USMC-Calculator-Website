@@ -179,16 +179,13 @@ def cftfunc(gender,age,altitude,get_mtc,get_acl,get_muf):
 	# Determine if the string has a range between XX.50 to XX.59
 		
 	#MTC lookup records
-	mtc = [character for character in mtc if character.isalnum()]
-	mtc = int("".join(mtc))
-	mtc = str(mtc)
-	if mtc.endswith("0"):
+	mtc = mtc.replace(".", "")
+	if len(mtc) == 3:
 		mtc = int(mtc)
-		if(mtc % 10 !=0):
-			mtc = (mtc - mtc % 10) + 10
-		mtc = str(mtc)
-
-
+	elif len(mtc) == 2:
+		mtc = float(mtc)
+		mtc = int(mtc * 10)
+	mtc = str(mtc)
 
 	if gender == "Male" and altitude == "No":
 		m_mtc_df=pd.read_csv("lookup_records/csv/cft/m_mtc_no_alt.csv",index_col=0)
@@ -216,14 +213,14 @@ def cftfunc(gender,age,altitude,get_mtc,get_acl,get_muf):
 		acl_pts = f_acl_df.loc[[acl],[age]].values[0]
 		event2 = acl_pts
 	#MUF record lookup
-	muf = [character for character in muf if character.isalnum()]
-	muf = int("".join(muf))
-	muf = str(muf)
-	if muf.endswith("0"):
+	muf = muf.replace(".", "")
+	if len(muf) == 3:
 		muf = int(muf)
-		if(muf % 10 !=0):
-			muf = (muf - muf % 10) + 10
-		muf = str(muf) + "0"
+	elif len(muf) == 2:
+		muf = float(muf)
+		muf = int(muf * 10)
+	muf = str(muf)
+
 	if gender == "Male" and altitude == "No":
 		m_muf_df=pd.read_csv("lookup_records/csv/cft/m_muf_no_alt.csv",index_col=0)
 		muf_pts = m_muf_df.loc[[muf],[age]].values[0]
@@ -298,7 +295,7 @@ def main():
 				get_run=0
 		elif get_Altitude == "No":
 			if get_event3 == "Run" and get_Gender == "Male":
-				get_run = st.number_input('Enter your runtime:',value=22.00,min_value=18.00,max_value=33.00,step=.01)
+				get_run = st.number_input('Enter your runtime:',value=22.00,min_value=18.00,max_value=33.15,step=.01)
 				get_row = 0
 			elif get_event3 == "Row" and get_Gender == "Male":
 				get_row = st.number_input('Enter your rowtime:',value=22.00,min_value=18.00,max_value=26.00,step=.01)
@@ -317,11 +314,11 @@ def main():
 			get_run = 0
 	else:
 		if get_Altitude == "No" and get_Gender == "Male":
-			get_mtc = st.number_input('Enter your time for movement to contact:',value=3.00,min_value=2.38,max_value=5.07,step=.01)
+			get_mtc = st.number_input('Enter your time for movement to contact:',value=3.15,min_value=2.38,max_value=5.07,step=.01)
 		elif get_Altitude == "No" and get_Gender == "Female":
 			get_mtc = st.number_input('Enter your time for movement to contact:',value=4.00,min_value=3.10,max_value=5.52,step=.01)
 		elif get_Altitude == "Yes" and get_Gender == "Male":
-			get_mtc = st.number_input('Enter your time for movement to contact:',value=3.00,min_value=2.44,max_value=5.11,step=.01)
+			get_mtc = st.number_input('Enter your time for movement to contact:',value=3.15,min_value=2.44,max_value=5.11,step=.01)
 		elif get_Altitude == "Yes" and get_Gender == "Female":
 			get_mtc = st.number_input('Enter your time for movement to contact:',value=4.00,min_value=3.16,max_value=5.58,step=.01)
 		if  get_Gender == "Male":
@@ -329,11 +326,11 @@ def main():
 		elif get_Gender == "Female":
 			get_acl = st.slider('How many ammo can lifts did you perform?',value=50,min_value=6,max_value=75,step=1)
 		if get_Altitude == "No" and get_Gender == "Male":
-			get_muf = st.number_input('Enter your time for maneuver under fire:',value=3.00,min_value=2.04,max_value=6.09,step=.01)
+			get_muf = st.number_input('Enter your time for maneuver under fire:',value=3.15,min_value=2.04,max_value=6.09,step=.01)
 		elif get_Altitude == "No" and get_Gender == "Female":
 			get_muf = st.number_input('Enter your time for maneuver under fire:',value=4.00,min_value=2.42,max_value=6.33,step=.01)
 		elif get_Altitude == "Yes" and get_Gender == "Male":
-			get_muf = st.number_input('Enter your time for maneuver under fire:',value=3.00,min_value=2.12,max_value=6.17,step=.01)
+			get_muf = st.number_input('Enter your time for maneuver under fire:',value=3.15,min_value=2.12,max_value=6.17,step=.01)
 		elif get_Altitude == "Yes" and get_Gender == "Female":
 			get_muf = st.number_input('Enter your time for maneuver under fire:',value=4.00,min_value=2.50,max_value=6.41,step=.01)
 	
