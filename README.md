@@ -70,4 +70,5 @@
 
 ![image](https://raw.githubusercontent.com/brogers1812/2021-USMC-Calculator/main/information/Slide1.JPG)
 ![image](https://raw.githubusercontent.com/brogers1812/2021-USMC-Calculator/main/information/Slide2.JPG)
+![image](https://github.com/brogers1812/2021-USMC-Calculator-Website/blob/e37e1348a7ba3beb6f8bad3828405469ee89b5e2/information/Slide3.JPG)
 
