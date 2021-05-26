@@ -178,7 +178,7 @@ def cftfunc(gender,age,altitude,get_mtc,get_acl,get_muf):
 
 	# Determine if the string has a range between XX.50 to XX.59
 		
-		#MTC lookup records
+	#MTC lookup records
 	mtc = [character for character in mtc if character.isalnum()]
 	mtc = int("".join(mtc))
 	mtc = str(mtc)
@@ -187,6 +187,8 @@ def cftfunc(gender,age,altitude,get_mtc,get_acl,get_muf):
 		if(mtc % 10 !=0):
 			mtc = (mtc - mtc % 10) + 10
 		mtc = str(mtc)
+
+
 
 	if gender == "Male" and altitude == "No":
 		m_mtc_df=pd.read_csv("lookup_records/csv/cft/m_mtc_no_alt.csv",index_col=0)
@@ -382,7 +384,7 @@ def main():
 				st.markdown("Your total CFT score is **_{}_** out of 300 points.\nYou earned a **_{}_** class PFT!".format(int(totalscore), pftclass))
 			else:
 				pftclass = "Failed"
-				st.markdown("Your total PFT score is {} out of 300 points.\nYou failed the PFT!".format(int(totalscore)))
+				st.markdown("Your total CFT score is {} out of 300 points.\nYou failed the CFT!".format(int(totalscore)))
 
 
 
