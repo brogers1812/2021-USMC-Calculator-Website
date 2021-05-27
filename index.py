@@ -276,42 +276,69 @@ def main():
 		elif get_event2 == "Plank":
 			get_plank = st.number_input('Enter your plank time:',value=3.05,min_value=1.03,max_value=4.20,step=.01)
 			get_crunch = 0
-		get_event3 = st.radio("Did you perform the 3 mile run or 5k row?",("Run","Row"))
-		if get_Altitude == "Yes":
-			if get_event3 == "Run" and get_Gender == "Male":
-				get_run = st.number_input('Enter your runtime:',value=22.00,min_value=19.30,max_value=34.30,step=.01)
-				get_row = 0
-			elif get_event3 == "Row" and get_Gender == "Male":
-				get_row = st.number_input('Enter your rowtime:',value=22.00,min_value=18.40,max_value=26.40,step=.01)
-				get_run = 0
-			elif get_event3 == "Run" and get_Gender == "Female":
-				get_run = st.number_input('Enter your runtime:',value=24.00,min_value=22.30,max_value=37.30,step=.01)
-				get_row = 0
-			elif get_event3 == "Row" and get_Gender == "Female":
-				get_row = st.number_input('Enter your rowtime:',value=24.00,min_value=21.40,max_value=29.40,step=.01)
-				get_run = 0
+		if get_age >= 46:
+			get_event3 = st.radio("Did you perform the 3 mile run or 5k row?",("Run","Row"))
+			if get_Altitude == "Yes":
+				if get_event3 == "Run" and get_Gender == "Male":
+					get_run = st.number_input('Enter your runtime:',value=22.00,min_value=19.30,max_value=34.30,step=.01)
+					get_row = 0
+				elif get_event3 == "Row" and get_Gender == "Male":
+					get_row = st.number_input('Enter your rowtime:',value=22.00,min_value=18.40,max_value=26.40,step=.01)
+					get_run = 0
+				elif get_event3 == "Run" and get_Gender == "Female":
+					get_run = st.number_input('Enter your runtime:',value=24.00,min_value=22.30,max_value=37.30,step=.01)
+					get_row = 0
+				elif get_event3 == "Row" and get_Gender == "Female":
+					get_row = st.number_input('Enter your rowtime:',value=24.00,min_value=21.40,max_value=29.40,step=.01)
+					get_run = 0
+				else:
+					get_row=0
+					get_run=0
+			elif get_Altitude == "No":
+				if get_event3 == "Run" and get_Gender == "Male":
+					get_run = st.number_input('Enter your runtime:',value=22.00,min_value=18.00,max_value=33.15,step=.01)
+					get_row = 0
+				elif get_event3 == "Row" and get_Gender == "Male":
+					get_row = st.number_input('Enter your rowtime:',value=22.00,min_value=18.00,max_value=26.00,step=.01)
+					get_run = 0
+				elif get_event3 == "Run" and get_Gender == "Female":
+					get_run = st.number_input('Enter your runtime:',value=22.00,min_value=21.00,max_value=36.00,step=.01)
+					get_row = 0
+				elif get_event3 == "Row" and get_Gender == "Female":
+					get_row = st.number_input('Enter your rowtime:',value=22.00,min_value=21.00,max_value=29.00,step=.01)
+					get_run = 0
+				else:
+					get_row=0
+					get_run=0
 			else:
-				get_row=0
-				get_run=0
-		elif get_Altitude == "No":
-			if get_event3 == "Run" and get_Gender == "Male":
-				get_run = st.number_input('Enter your runtime:',value=22.00,min_value=18.00,max_value=33.15,step=.01)
 				get_row = 0
-			elif get_event3 == "Row" and get_Gender == "Male":
-				get_row = st.number_input('Enter your rowtime:',value=22.00,min_value=18.00,max_value=26.00,step=.01)
 				get_run = 0
-			elif get_event3 == "Run" and get_Gender == "Female":
-				get_run = st.number_input('Enter your runtime:',value=22.00,min_value=21.00,max_value=36.00,step=.01)
-				get_row = 0
-			elif get_event3 == "Row" and get_Gender == "Female":
-				get_row = st.number_input('Enter your rowtime:',value=22.00,min_value=21.00,max_value=29.00,step=.01)
-				get_run = 0
+		elif get_age < 46:
+			st.markdown("Due to your age, you're only authorized to perform the run.")
+			get_event3 = "Run"
+			if get_Altitude == "Yes":
+				if get_Gender == "Male":
+					get_run = st.number_input('Enter your runtime:',value=22.00,min_value=19.30,max_value=34.30,step=.01)
+					get_row = 0
+				elif get_Gender == "Female":
+					get_run = st.number_input('Enter your runtime:',value=24.00,min_value=22.30,max_value=37.30,step=.01)
+					get_row = 0
+				else:
+					get_row=0
+					get_run=0
+			elif get_Altitude == "No":
+				if  get_Gender == "Male":
+					get_run = st.number_input('Enter your runtime:',value=22.00,min_value=18.00,max_value=33.15,step=.01)
+					get_row = 0
+				elif get_Gender == "Female":
+					get_run = st.number_input('Enter your runtime:',value=22.00,min_value=21.00,max_value=36.00,step=.01)
+					get_row = 0
+				else:
+					get_row=0
+					get_run=0
 			else:
-				get_row=0
-				get_run=0
-		else:
-			get_row = 0
-			get_run = 0
+				get_row = 0
+				get_run = 0
 	else:
 		if get_Altitude == "No" and get_Gender == "Male":
 			get_mtc = st.number_input('Enter your time for movement to contact:',value=3.15,min_value=2.38,max_value=5.07,step=.01)

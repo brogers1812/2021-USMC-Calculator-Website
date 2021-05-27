@@ -1,6 +1,12 @@
 # 2021-USMC-Calculator-Website
+<h4>5/26/2021</h4>
+    <li>  Corrected error with time conversion between string and integer</li>
+    <li>  Only Marines that are 46 or older are authorized to perform the row. Changed the code to only allow the row option when the user inputs an appropriate age for the event.</li>
+<h5>Way Ahead</h5>
+    <li>Possibly Body Composition Program implementation</li>
+    <li><b>Testing</b> for quality assurance</li>
 <h4>5/25/2021</h4>
-<p style="margin-left:10%"; margin-right:10%;">As the calculator continues to grow, it becomes tedious to maintain two separate repositories for essentially the same program. The website application continues to use the original Python code and has grown significantly over the past 10 days. With the assistance of the Streamlit module, I’ve been able to deploy my program much faster than anticipated.  
+<p style="margin-left:10%"; margin-right:10%;">As the calculator continues to grow, it becomes tedious to maintain two separate repositories for essentially the same program. The website application continues to use the original Python code and has grown significantly over the past 10 days. With the assistance of the Streamlit module, I’ve been able to deploy my program much faster than anticipated. </P>
     <li>  Combat Fitness Test (CFT) scoring is now active.</li>
     <li>  The web application can be accessed at the following link. <a href=https://share.streamlit.io/brogers1812/2021-usmc-calculator-website/main/index.py>2021 USMC Calculator</a></li>
 <h5>Way Ahead</h5>
