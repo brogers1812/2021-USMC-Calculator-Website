@@ -245,11 +245,11 @@ def main():
 	st.title("2021 USMC PFT/CFT Calculator")
 	html_temp="An updated calculator that complies with MCO 6100.13A with CH-3 dated 23 February 2021.<br> By. Beau Rogers "
 	st.markdown(html_temp,unsafe_allow_html = True)
-	get_type = st.radio("Did you perform the PFT or CFT?",("PFT","CFT"))
+	get_type = st.radio("Did you perform the PFT or CFT?",("PFT","CFT","BCP"))
 	get_Gender = st.radio("Select your gender",("Male","Female"))
-	get_Altitude = st.radio("Did you conduct the PFT at an elevation above 4500 ft mean sea level?",("No","Yes"))
-	get_age = st.slider("How old are you?",value=25, min_value=17, max_value=51, step=1)
 	if get_type == "PFT":
+		get_Altitude = st.radio("Did you conduct the PFT/CFT at an elevation above 4500 ft mean sea level?",("No","Yes"))
+		get_age = st.slider("How old are you?",value=25, min_value=17, max_value=51, step=1)
 		get_event1 = st.radio("Did you perform pullups or pushups?",("Pull-ups","Push-ups"))
 		if get_event1 == 'Pull-ups' and get_Gender == "Male":
 			get_pull = st.slider("How many pullups did you perform?",value=15, min_value=3, max_value=23, step=1)
@@ -339,7 +339,9 @@ def main():
 			else:
 				get_row = 0
 				get_run = 0
-	else:
+	elif get_type == "CFT": 
+		get_Altitude = st.radio("Did you conduct the PFT/CFT at an elevation above 4500 ft mean sea level?",("No","Yes"))
+		get_age = st.slider("How old are you?",value=25, min_value=17, max_value=51, step=1)
 		if get_Altitude == "No" and get_Gender == "Male":
 			get_mtc = st.number_input('Enter your time for movement to contact:',value=3.15,min_value=2.38,max_value=5.07,step=.01)
 		elif get_Altitude == "No" and get_Gender == "Female":
@@ -361,6 +363,24 @@ def main():
 		elif get_Altitude == "Yes" and get_Gender == "Female":
 			get_muf = st.number_input('Enter your time for maneuver under fire:',value=4.00,min_value=2.50,max_value=6.41,step=.01)
 	
+	else:
+		st.write("BCP Calculator in progress!")
+		get_ht = st.slider('Select your height in inches',value=70,min_value=52,max_value=86,step=1)
+		if get_Gender == "Male":
+			get_wt = st.number_input('Enter your weight in pounds',value=210,min_value=73,max_value=289,step=1)
+			get_neck_circum = st.number_input('Enter your neck circumference',value=15,min_value=12,max_value=18,step=1)
+			get_ab_circum = st.number_input('Enter your abdomen circumference',value=30,min_value=27,max_value=42,step=1)
+			get_wt_circum = 0
+			get_hip_circum = 0
+		elif get_Gender == "Female":
+			get_wt = st.number_input('Enter your weight in pounds',value=150,min_value=73,max_value=274,step=1)
+			get_wt_circum = st.number_input('Enter your waist circumference',value=15,min_value=12,max_value=18,step=1)
+			get_hip_circum = st.number_input('Enter your hip circumference',value=15,min_value=12,max_value=18,step=1)
+			get_neck_circum = 0
+			get_ab_circum = 0
+
+
+
 	if st.button("Calculate"):
 		if get_type == "PFT":
 			totalscore=pftfunc(get_Gender,get_age,get_Altitude,get_pull,get_event1,get_push,get_event2,get_crunch,get_plank,get_event3,get_run,get_row)
