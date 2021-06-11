@@ -240,6 +240,91 @@ def cftfunc(gender,age,altitude,get_mtc,get_acl,get_muf):
 
 	cftfunc = int(event1) + int(event2) + int(event3) 
 	return cftfunc
+
+
+
+def bcp(get_ht,get_wt,get_gender,get_neck_circum,get_ab_circum,get_wt_circum,get_hip_circum):
+	ht=str(get_ht)
+	wt=str(get_wt)
+	gender = get_gender
+	
+	if gender == "Male":
+		m_ht_wt_df=pd.read_csv("lookup_records/csv/bcp/male_ht_wt_chart.csv",index_col=0)
+		m_ht_wt = m_ht_wt_df.loc[[wt],[ht]].values[0]
+		if m_ht_wt == 1:
+			print("You are within standards")
+		else:
+			print("You are not within standards")
+	else:
+		f_ht_wt_df=pd.read_csv("lookup_records/csv/bcp/female_ht_wt_chart.csv",index_col=0)
+		f_ht_wt = f_ht_wt_df.loc[[wt],[ht]].values[0]
+		if f_ht_wt == 1:
+			print("You are within standards")
+		else:
+			print("You are not within standards")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		
 def main():
 	st.title("2021 USMC PFT/CFT Calculator")

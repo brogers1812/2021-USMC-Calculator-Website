@@ -1,4 +1,12 @@
 # 2021-USMC-Calculator-Website
+<h4>6/10/2021</h4>
+<p style="margin-left:10%"; margin-right:10%;">I'm severly behind my updates for a variety of reasons but moving to Hawaii is the biggest one. I've still been working on updating the program to include the BCP. I'll keep improving on the program but it'll be slightly slower than anticpated. 
+<li> Created Ht/Wt chart for males and females </li>
+<li> Began initial programming for user input </li>
+<h5>Way Ahead </h5>
+<li> Generate the code to determine user input is within standards </li>
+<li> If not within standards, begin calculating BCP user input values </li>
+
 <h4>5/26/2021</h4>
     <li>  Corrected error with time conversion between string and integer</li>
     <li>  Only Marines that are 46 or older are authorized to perform the row. Changed the code to only allow the row option when the user inputs an appropriate age for the event.</li>
