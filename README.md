@@ -1,4 +1,9 @@
 # 2021-USMC-Calculator-Website
+<h4>6/14/2021</h4>
+<li>Updates include female height & weight standards. 
+<h5>Way Ahead</h5>
+<li>Improve user friendliness</li>
+
 <h4>6/13/2021</h4>
     <li>The program can now calculate the height and weight standards for males. </li>
     <li>Updated the code to include an extra body fat % for 250+ PFT & CFT</li>

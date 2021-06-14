@@ -2,15 +2,21 @@ import streamlit as st
 
 
 def agefunc(wt,ht):
-	ht = float(ht)
+	basic_ht = float(ht)
 	wt = float(wt)
+	
+	if basic_ht == 52 and 73 <= wt <= 100 or basic_ht == 53 and 76 <= wt <= 104
 
-	if ht == 52 and 73 <= wt <= 106:
-		st.markdown("You are within height and weight standards")
-	elif ht == 52 and 73 > wt:
-		st.markdown("You are underweight")
-	elif ht == 52 and wt > 106:
-		st.markdown("You are overweight")
+
+	if basic_ht == 52 and 73 <= wt <= 106 or basic_ht == 53 and 110 >= wt >= 76:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+	elif basic_ht == 52 and 73 > wt or basic_ht == 53 and 76 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+	elif basic_ht == 52 and wt > 106 or basic_ht == 53 and 110 > wt:
+			overweight = 1
+	
 
 	return 
 
