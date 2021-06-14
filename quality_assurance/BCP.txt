@@ -1,0 +1,11 @@
+ht = 61
+
+In standards
+circum value = 17
+neck = 15
+abs = 32
+
+Out of standards
+circum value = 21
+neck = 15
+abs = 36
