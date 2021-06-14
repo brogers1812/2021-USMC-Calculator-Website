@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import math
 import streamlit as st
 
 
@@ -240,6 +241,728 @@ def cftfunc(gender,age,altitude,get_mtc,get_acl,get_muf):
 
 	cftfunc = int(event1) + int(event2) + int(event3) 
 	return cftfunc
+
+
+
+def bcpfunc(get_ht,get_wt,get_age,get_gender,get_extra_point,get_circum_value):
+	basic_ht = math.ceil(get_ht)
+	advanced_ht = float(get_ht)
+	wt = float(get_wt)
+	age = get_age
+	gender = str(get_gender)
+	circum_value = str(get_circum_value)
+
+	if gender == "Male":
+		if basic_ht == 52 and 73 <= wt <= 106:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 52 and 73 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 52 and wt > 106:
+			overweight = 1
+		elif basic_ht == 53 and 110 >= wt >= 76:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 53 and 76 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 53 and wt > 110:
+			overweight = 1
+		elif basic_ht == 54 and 114 >= wt >= 79:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 54 and 79 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 54 and wt > 114:
+			overweight = 1
+		elif basic_ht == 55 and 118 >= wt >= 82:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 55 and 82 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 55 and wt > 118:
+			overweight = 1
+		elif basic_ht == 56 and 122 >= wt >= 85:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 56 and 85 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 56  and wt > 122:
+			overweight = 1
+		elif basic_ht == 57 and 127 >= wt >= 88:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 57 and 88 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 57 and wt > 127:
+			overweight = 1
+		elif basic_ht == 58 and 131 >= wt >= 91:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 58 and 91 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 58 and wt > 131:
+			overweight = 1
+		elif basic_ht == 59 and 136 >= wt >= 94:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 59 and 94 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 59 and wt > 136:
+			overweight = 1    
+		elif basic_ht == 60 and 141 >= wt >= 97:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 60 and 97 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 60 and wt > 141:
+			overweight = 1
+		elif basic_ht == 61 and 145 >= wt >= 100:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 61 and 100 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 61 and wt > 145:
+			overweight = 1
+		elif basic_ht == 62 and 150 >= wt >= 104:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 62 and 104 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 62 and wt > 150:
+			overweight = 1
+		elif basic_ht == 63 and 155 >= wt >= 107:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 63 and 107 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 63 and wt > 155:
+			overweight = 1
+		elif basic_ht == 64 and 160 >= wt >= 110:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 64 and 110 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 64 and wt > 160:
+			overweight = 1
+		elif basic_ht == 65 and 165 >= wt >= 114:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 65 and 114 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 65 and wt > 165:
+			overweight = 1
+		elif basic_ht == 66 and 170 >= wt >= 117:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 66 and 117 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 66 and wt > 170:
+			overweight = 1
+		elif basic_ht == 67 and 175 >= wt >= 121:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 67 and 121 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 67 and wt > 175:
+			overweight = 1
+		elif basic_ht == 68 and 180 >= wt >= 125:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 68 and 125 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 68 and wt > 180:
+			overweight = 1
+		elif basic_ht == 69 and 186 >= wt >= 128:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 69 and 128 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 69 and wt > 186:
+			overweight = 1
+		elif basic_ht == 70 and 191 >= wt >= 132:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 70 and 132 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 70 and wt > 191:
+			overweight = 1
+		elif basic_ht == 71 and 197 >= wt >= 136:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 71 and 136 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 71 and wt > 197:
+			overweight = 1
+		elif basic_ht == 72 and 202 >= wt >= 140:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 72 and 140 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 72 and wt > 202:
+			overweight = 1
+		elif basic_ht == 73 and 208 >= wt >= 144:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 73 and 144 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 73 and wt > 208:
+			overweight = 1
+		elif basic_ht == 74 and 214 >= wt >= 148:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 74 and 148 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 74 and wt > 214:
+			overweight = 1
+		elif basic_ht == 75 and 220 >= wt >= 152:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 75 and 152 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 75 and wt > 220:
+			overweight = 1
+		elif basic_ht == 76 and 225 >= wt >= 156:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 76 and 156 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 76 and wt > 255:
+			overweight = 1
+		elif basic_ht == 77 and 231 >= wt >= 160:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 77 and 160 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 77 and wt > 231:
+			overweight = 1
+		elif basic_ht == 78 and 237 >= wt >= 164:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 78 and 164 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 78 and wt > 237:
+			overweight = 1
+		elif basic_ht == 79 and 244 >= wt >= 168:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 79 and 168 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 79 and wt > 244:
+			overweight = 1
+		elif basic_ht == 80 and 250 >= wt >= 173:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 80 and 173 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 80 and wt > 250:
+			overweight = 1
+		elif basic_ht == 81 and 256 >= wt >= 177:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 81 and 177 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 81 and wt > 256:
+			overweight = 1
+		elif basic_ht == 82 and 263 >= wt >= 182:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 82 and 182 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 82 and wt > 263:
+			overweight = 1
+		elif basic_ht == 83 and 269 >= wt >= 186:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 83 and 186 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 83 and wt > 269:
+			overweight = 1
+		elif basic_ht == 84 and 276 >= wt >= 191:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 84 and 191 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 84 and wt > 276:
+			overweight = 1
+		elif basic_ht == 85 and 283 >= wt >= 195:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 85 and 195 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 85 and wt > 283:
+			overweight = 1
+		elif basic_ht == 86 and 289 >= wt >= 200:
+			st.markdown("You are within height and weight standards.")
+			overweight = 0
+		elif basic_ht == 86 and 200 > wt:
+			st.markdown("You are underweight")
+			overweight = 0
+		elif basic_ht == 86 and wt > 289:
+			overweight = 1
+
+		if 17 <= age <= 25:
+			max_bcp_percent = 18
+			if get_extra_point == 'Yes':
+				max_bcp_percent = 19
+		elif 26 <= age <= 35:
+			max_bcp_percent = 19
+			if get_extra_point == 'Yes':
+				max_bcp_percent = 20
+		elif 36 <= age <= 45:
+			max_bcp_percent = 20
+			if get_extra_point == 'Yes':
+				max_bcp_percent = 21
+		elif 46 <= age <= 51:
+			max_bcp_percent = 21
+			if get_extra_point == 'Yes':
+				max_bcp_percent = 22
+
+		if 52 <= advanced_ht <=54.5 and overweight == 1:
+			st.markdown("You are a height that is not considered for the Body Composition Program.")
+			m_body_fat_lookup = 0.0
+
+		elif 55.0 <= advanced_ht <= 59.5 and overweight == 1:
+			ht = str(advanced_ht)
+			m_body_fat_lookup_df=pd.read_csv("lookup_records/csv/bcp/male_55-595_chart.csv",index_col=0)
+			m_body_fat_lookup = m_body_fat_lookup_df.loc[[circum_value],[ht]].values[0]
+			if m_body_fat_lookup <= max_bcp_percent:
+				st.markdown("You are within standards")
+			elif m_body_fat_lookup > max_bcp_percent:
+				st.markdown("You are not within standards. 3rd option. ")
+
+		elif 60 <= advanced_ht <= 64.5 and overweight == 1:
+			ht = str(advanced_ht)
+			m_body_fat_lookup_df=pd.read_csv("lookup_records/csv/bcp/male_60-645_chart.csv",index_col=0)
+			m_body_fat_lookup = m_body_fat_lookup_df.loc[[circum_value],[ht]].values[0]
+			if m_body_fat_lookup <= max_bcp_percent:
+				st.markdown("You are within standards")
+			elif m_body_fat_lookup > max_bcp_percent:
+				st.markdown("You are not within standards. 3rd option. ")
+
+		elif 65 <= advanced_ht <= 69.5 and overweight == 1:
+			ht = str(advanced_ht)
+			m_body_fat_lookup_df=pd.read_csv("lookup_records/csv/bcp/male_65-695_chart.csv",index_col=0)
+			m_body_fat_lookup = m_body_fat_lookup_df.loc[[circum_value],[ht]].values[0]
+			if m_body_fat_lookup <= max_bcp_percent:
+				st.markdown("You are within standards")
+			elif m_body_fat_lookup > max_bcp_percent:
+				st.markdown("You are not within standards. 3rd option. ")
+
+		elif 70 <= advanced_ht <= 74.5 and overweight == 1:
+			ht = str(advanced_ht)
+			m_body_fat_lookup_df=pd.read_csv("lookup_records/csv/bcp/male_70-745_chart.csv",index_col=0)
+			m_body_fat_lookup = m_body_fat_lookup_df.loc[[circum_value],[ht]].values[0]
+			if m_body_fat_lookup <= max_bcp_percent:
+				st.markdown("You are within standards")
+			elif m_body_fat_lookup > max_bcp_percent:
+				st.markdown("You are not within standards. 3rd option. ")
+
+		elif 75 <= advanced_ht <= 79.5 and overweight == 1:
+			ht = str(advanced_ht)
+			m_body_fat_lookup_df=pd.read_csv("lookup_records/csv/bcp/male_75-795_chart.csv",index_col=0)
+			m_body_fat_lookup = m_body_fat_lookup_df.loc[[circum_value],[ht]].values[0]
+			if m_body_fat_lookup <= max_bcp_percent:
+				st.markdown("You are within standards")
+			elif m_body_fat_lookup > max_bcp_percent:
+				st.markdown("You are not within standards. 3rd option. ")
+			
+		if overweight == 0:
+			body_fat = 0.0
+		else:
+			body_fat = float(m_body_fat_lookup)
+		
+
+	else:
+		if basic_ht == 52 and 100 >= wt >= 73:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 52 and wt < 73:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 52 and wt > 100:
+			overweight = 1
+		elif basic_ht == 53 and 104 >= wt >= 76:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 53 and wt < 76:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 53 and wt > 104:
+			overweight = 1
+		elif basic_ht == 54 and 108 >= wt >= 79:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 54 and wt < 73:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 54 and wt > 108:
+			overweight = 1
+		elif basic_ht == 55 and 112 >= wt >= 82:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 55 and wt < 82:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 55 and wt > 112:
+			overweight = 1
+		elif basic_ht == 56 and 115 >= wt >= 85:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 56 and wt < 85:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 56 and wt > 115:
+			overweight = 1
+		elif basic_ht == 57 and 120 >= wt >= 88:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 57 and wt < 88:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 57 and wt > 120:
+			overweight = 1
+		elif basic_ht == 58 and 124 >= wt >= 91:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 58 and wt < 91:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 58 and wt > 124:
+			overweight = 1
+		elif basic_ht == 59 and 129 >= wt >= 94:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 59 and wt < 94:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 59 and wt > 129:
+			overweight = 1
+		elif basic_ht == 60 and 133 >= wt >= 97:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 60 and wt < 73:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 60 and wt > 133:
+			overweight = 1
+		elif basic_ht == 61	and 137	>= wt >= 100:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 61 and wt < 100:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 61 and wt > 137:
+			overweight = 1
+		elif basic_ht == 62	and 142	>= wt >= 104:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 62 and wt < 104:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 62 and wt > 142:
+			overweight = 1
+		elif basic_ht == 63	and 146	>= wt >= 107:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 63 and wt < 107:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 63 and wt > 146:
+			overweight = 1
+		elif basic_ht == 64	and 151	>= wt >= 110:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 64 and wt < 110:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 64 and wt > 151:
+			overweight = 1
+		elif basic_ht == 65	and 156	>= wt >= 114:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 65 and wt < 114:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 65 and wt > 156:
+			overweight = 1
+		elif basic_ht == 66	and 161	>= wt >= 117:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 66 and wt < 117:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 66 and wt > 161:
+			overweight = 1
+		elif basic_ht == 67	and 166	>= wt >= 121:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 67 and wt < 121:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 67 and wt > 166:
+			overweight = 1
+		elif basic_ht == 68	and 171	>= wt >= 125:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 68 and wt < 125:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 68 and wt > 171:
+			overweight = 1
+		elif basic_ht == 69	and 176	>= wt >= 128:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 69 and wt < 128:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 69 and wt > 176:
+			overweight = 1
+		elif basic_ht == 70	and 181	>= wt >= 132:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 70 and wt < 132:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 70 and wt > 181:
+			overweight = 1
+		elif basic_ht == 71	and 186	>= wt >= 136:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 71 and wt < 136:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 71 and wt > 186:
+			overweight = 1
+		elif basic_ht == 72	and 191	>= wt >= 140:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 72 and wt < 140:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 72 and wt > 191:
+			overweight = 1
+		elif basic_ht == 73	and 197	>= wt >= 144:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 73 and wt < 144:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 73 and wt > 197:
+			overweight = 1
+		elif basic_ht == 74	and 202	>= wt >= 148:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 74 and wt < 148:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 74 and wt > 202:
+			overweight = 1
+		elif basic_ht == 75	and 208	>= wt >= 152:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 75 and wt < 152:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 75 and wt > 208:
+			overweight = 1
+		elif basic_ht == 76	and 213	>= wt >= 156:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 76 and wt < 156:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 76 and wt > 213:
+			overweight = 1
+		elif basic_ht == 77	and 219	>= wt >= 160:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 77 and wt < 160:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 77 and wt > 219:
+			overweight = 1
+		elif basic_ht == 78	and 225	>= wt >= 164:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 78 and wt < 164:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 78 and wt > 225:
+			overweight = 1
+		elif basic_ht == 79	and 230	>= wt >= 168:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 79 and wt < 168:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 79 and wt > 230:
+			overweight = 1
+		elif basic_ht == 80	and 236	>= wt >= 173:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 80 and wt < 173:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 80 and wt > 236:
+			overweight = 1
+		elif basic_ht == 81	and 242	>= wt >= 177:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 81 and wt < 177:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 81 and wt > 242:
+			overweight = 1
+		elif basic_ht == 82	and 248	>= wt >= 182:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 82 and wt < 182:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 82 and wt > 248:
+			overweight = 1
+		elif basic_ht == 83	and 255	>= wt >= 186:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 83 and wt < 186:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 83 and wt > 255:
+			overweight = 1
+		elif basic_ht == 84	and 261	>= wt >= 191:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 84 and wt < 191:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 84 and wt > 261:
+			overweight = 1
+		elif basic_ht == 85	and 267	>= wt >= 195:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 85 and wt < 195:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 85 and wt > 267:
+			overweight = 1
+		elif basic_ht == 86	and 274	>= wt >= 200:
+			st.markdown("You are within height and weight standards")
+			overweight = 0
+		elif basic_ht == 86 and wt < 200:
+			st.markdown("You are underweight.")
+			overweight = 0
+		elif basic_ht == 86 and wt > 274:
+			overweight = 1
+
+
+		if 17 <= age <= 25:
+			max_bcp_percent = 26
+			if get_extra_point == 'Yes':
+				max_bcp_percent = 27
+		elif 26 <= age <= 35:
+			max_bcp_percent = 27
+			if get_extra_point == 'Yes':
+				max_bcp_percent = 28
+		elif 36 <= age <= 45:
+			max_bcp_percent = 28
+			if get_extra_point == 'Yes':
+				max_bcp_percent = 29
+		elif 46 <= age <= 51:
+			max_bcp_percent = 29
+			if get_extra_point == 'Yes':
+				max_bcp_percent = 30
+
+
+
+		if 52 == advanced_ht and overweight == 1:
+			st.markdown("You are a height that is not considered for the Body Composition Program.")
+			f_body_fat_lookup = 0.0
+
+		elif 53.0 <= advanced_ht <= 57.5 and overweight == 1:
+			ht = str(advanced_ht)
+			f_body_fat_lookup_df=pd.read_csv("lookup_records/csv/bcp/male_55-595_chart.csv",index_col=0)
+			f_body_fat_lookup = f_body_fat_lookup_df.loc[[circum_value],[ht]].values[0]
+			if f_body_fat_lookup <= max_bcp_percent:
+				st.markdown("You are within standards")
+			elif f_body_fat_lookup > max_bcp_percent:
+				st.markdown("You are not within standards. 3rd option. ")
+
+		elif 58 <= advanced_ht <= 62.5 and overweight == 1:
+			ht = str(advanced_ht)
+			f_body_fat_lookup_df=pd.read_csv("lookup_records/csv/bcp/male_60-645_chart.csv",index_col=0)
+			f_body_fat_lookup = f_body_fat_lookup_df.loc[[circum_value],[ht]].values[0]
+			if f_body_fat_lookup <= max_bcp_percent:
+				st.markdown("You are within standards")
+			elif f_body_fat_lookup > max_bcp_percent:
+				st.markdown("You are not within standards. 3rd option. ")
+
+		elif 63 <= advanced_ht <= 67.5 and overweight == 1:
+			ht = str(advanced_ht)
+			f_body_fat_lookup_df=pd.read_csv("lookup_records/csv/bcp/male_65-695_chart.csv",index_col=0)
+			f_body_fat_lookup = f_body_fat_lookup_df.loc[[circum_value],[ht]].values[0]
+			if f_body_fat_lookup <= max_bcp_percent:
+				st.markdown("You are within standards")
+			elif f_body_fat_lookup > max_bcp_percent:
+				st.markdown("You are not within standards. 3rd option. ")
+
+		elif 68 <= advanced_ht <= 72.5 and overweight == 1:
+			ht = str(advanced_ht)
+			f_body_fat_lookup_df=pd.read_csv("lookup_records/csv/bcp/male_70-745_chart.csv",index_col=0)
+			f_body_fat_lookup = f_body_fat_lookup_df.loc[[circum_value],[ht]].values[0]
+			if f_body_fat_lookup <= max_bcp_percent:
+				st.markdown("You are within standards")
+			elif f_body_fat_lookup > max_bcp_percent:
+				st.markdown("You are not within standards. 3rd option. ")
+
+		elif 73 <= advanced_ht <= 77.5 and overweight == 1:
+			ht = str(advanced_ht)
+			f_body_fat_lookup_df=pd.read_csv("lookup_records/csv/bcp/male_75-795_chart.csv",index_col=0)
+			f_body_fat_lookup = f_body_fat_lookup_df.loc[[circum_value],[ht]].values[0]
+			if f_body_fat_lookup <= max_bcp_percent:
+				st.markdown("You are within standards")
+			elif f_body_fat_lookup > max_bcp_percent:
+				st.markdown("You are not within standards. 3rd option. ")
+			
+		if overweight == 0:
+			body_fat = 0.0
+		else:
+			body_fat = float(f_body_fat_lookup)
+		
+	return body_fat
 		
 def main():
 	st.title("2021 USMC PFT/CFT Calculator")
@@ -364,21 +1087,26 @@ def main():
 			get_muf = st.number_input('Enter your time for maneuver under fire:',value=4.00,min_value=2.50,max_value=6.41,step=.01)
 	
 	else:
-		st.write("BCP Calculator in progress!")
-		get_ht = st.slider('Select your height in inches',value=70.0,min_value=52.0,max_value=86.0,step=.5)
-		if get_gender == "Male":
-			get_wt = st.number_input('Enter your weight in pounds',value=210,min_value=73,max_value=289,step=1)
-			get_neck_circum = st.number_input('Enter your neck circumference',value=15,min_value=12,max_value=18,step=1)
-			get_ab_circum = st.number_input('Enter your abdomen circumference',value=30,min_value=27,max_value=42,step=1)
-			get_wt_circum = 0
-			get_hip_circum = 0
-		elif get_gender == "Female":
-			get_wt = st.number_input('Enter your weight in pounds',value=150,min_value=73,max_value=274,step=1)
-			get_wt_circum = st.number_input('Enter your waist circumference',value=15,min_value=12,max_value=18,step=1)
-			get_hip_circum = st.number_input('Enter your hip circumference',value=15,min_value=12,max_value=18,step=1)
-			get_neck_circum = 0
-			get_ab_circum = 0
-
+		get_ironman = st.radio("Did you score a 285 of higher on the PFT & CFT?",("No","Yes"))
+		if get_ironman == "Yes":
+			st.markdown('You are exempt from the Marine Corps height and weight standards.')
+		else:
+			get_extra_point = st.radio('Did you score a 250 or higher on the PFT & CFT',("No","Yes"))
+			if get_extra_point == "Yes":
+				st.markdown("You earned an extra body fat percentage. I.e. 18% --> 19%")
+			get_age = st.slider("How old are you?",value=25, min_value=17, max_value=51, step=1)
+			get_ht = st.slider('Select your height in inches',value=70.5,min_value=52.0,max_value=86.0,step=.5)
+			if get_gender == "Male":
+				get_wt = st.number_input('Enter your weight in pounds',value=210,min_value=60,max_value=300,step=1)
+				get_neck_circum = st.number_input('Enter your neck circumference',value=15.5,min_value=12.0,max_value=18.0,step=.5)
+				get_ab_circum = st.number_input('Enter your abdomen circumference',value=31.5,min_value=25.0,max_value=42.0,step=.5)
+				get_circum_value = get_ab_circum - get_neck_circum
+			elif get_gender == "Female":
+				get_wt = st.number_input('Enter your weight in pounds',value=140,min_value=60,max_value=300,step=1)
+				get_neck_circum = st.number_input('Enter your neck circumference',value=15.5,min_value=12.0,max_value=18.0,step=.5)
+				get_wt_circum = st.number_input('Enter your waist circumference',value=15,min_value=12,max_value=18,step=1)
+				get_hip_circum = st.number_input('Enter your hip circumference',value=15,min_value=12,max_value=18,step=1)
+				get_circum_value = get_wt_circum + get_hip_circum - get_neck_circum
 
 
 	if st.button("Calculate"):
@@ -429,8 +1157,12 @@ def main():
 			else:
 				pftclass = "Failed"
 				st.markdown("Your total CFT score is {} out of 300 points.\nYou failed the CFT!".format(int(totalscore)))
-
-
+		elif get_type == "BCP":
+			bcp_value=bcpfunc(get_ht,get_wt,get_age,get_gender,get_extra_point,get_circum_value)
+			st.title('BCP results')
+			st.markdown("Body Fat Percentage:  {}".format(float(bcp_value)))
+			st.markdown("Your circumference value is: {}".format(float(get_circum_value)))
+			
 
 if __name__=='__main__':
 	main()
