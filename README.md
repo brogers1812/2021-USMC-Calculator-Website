@@ -1,4 +1,10 @@
 # 2021-USMC-Calculator-Website
+<h4>5/13/2022</h4>
+<li>Updated the plank scores to reflect 2022 Marine Corps changes.
+<h5>Way Ahead</h5>
+<li>Keeping program relevant with Marine Corps standards.</li>
+
+
 <h4>6/14/2021</h4>
 <li>Updates include female height & weight standards. 
 <h5>Way Ahead</h5>
